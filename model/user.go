@@ -2,7 +2,6 @@ package model
 
 import (
 	"errors"
-	"fmt"
 
 	"example.com/rest-api/db"
 	"example.com/rest-api/utils"
@@ -78,10 +77,7 @@ func (u *User) ValidateCredentials() error {
 		return errors.New("Credential Invalid")
 	}
 
-	fmt.Println("retreived ", retrievedPassword)
-	fmt.Println("password", u.Password)
 	passwordIsValid := utils.CheckPasswordHash(u.Password, retrievedPassword)
-
 	if !passwordIsValid {
 		return errors.New("Credential Invalid")
 	}
